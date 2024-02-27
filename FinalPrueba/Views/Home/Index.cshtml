@@ -1,0 +1,59 @@
+﻿@using X.PagedList.Mvc.Core
+@model X.PagedList.IPagedList<FinalPrueba.Models.Ticket>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Tickets pendientes de resolucion</h1>
+<div class="container py-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Afiliado
+                        </th>
+                        <th>
+                            Fecha de solicitud
+                        </th>
+                        <th>
+                            Observacion
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var ticket in Model)
+                    {
+                        <tr>
+                            <td>
+
+
+                                @ticket.afiliado.apellido
+
+                            </td>
+                            <td>
+                                @ticket.fechaSolicitud
+                            </td>
+                            <td>
+                                @ticket.observacion
+                            </td>
+                            <td>
+                                <a asp-controller="Tickets" asp-action="Details" asp-route-id="@ticket.Id">Ver detalles</a>
+                            </td>
+                            <td>
+                                <a asp-controller="TicketDetalles" asp-action="DetallesPorTicket" asp-route-id="@ticket.Id">Ver detalles de pedido</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions() { LiElementClasses = new string[] { "page-item" }, PageClasses = new string[] { "page-link" } })
+
+

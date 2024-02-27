@@ -1,0 +1,80 @@
+﻿@model FinalPrueba.ViewModels.TicketsViewModel
+@using X.PagedList.Mvc.Core
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Lista de tickets</h1>
+
+<p>
+    <a asp-action="Create" class="text-center">Crear ticket</a>
+</p>
+<div class="container py-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <form asp-action="index">
+                <p>
+                    Fecha:<input type="date" asp-for="@Model.fechaSolicitud" name="fechaSolicitud" />
+
+                    <input type="submit" value="Filtrar" />
+                </p>
+
+            </form>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Id
+                        </th>
+                        <th>
+                            Afiliado
+                        </th>
+                        <th>
+                            Fecha de solicitud
+                        </th>
+                        <th>
+                            Observacion
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Tickets)
+                    {
+                    <tr>
+                        <td>
+
+
+                            @Html.DisplayFor(modelItem => item.Id)
+
+                        </td>
+                        <td>
+
+
+                            @Html.DisplayFor(modelItem => item.afiliado.nombreCompleto)
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.fechaSolicitud)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.observacion)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+@Html.PagedListPager(Model.Tickets, page => Url.Action("Index", new { page }), new PagedListRenderOptions() { LiElementClasses = new string[] { "page-item" }, PageClasses = new string[] { "page-link" } })
+

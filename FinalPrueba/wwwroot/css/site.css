@@ -1,0 +1,104 @@
+﻿/* Navbar */
+.navbar {
+    background-color: #aed9e0; /* Color de fondo de la barra de navegación */
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: #34495e; /* Color de texto de la barra de navegación */
+    font-weight: bold;
+}
+
+    .navbar-brand:hover,
+    .navbar-nav .nav-link:hover {
+        color: #6c757d; /* Color de texto al pasar el ratón sobre los enlaces */
+        font-weight: bold;
+    }
+
+/* Botones */
+.nav-item {
+    border-color: #9cc6cf; /* Color del borde del botón en el navbar */
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+    .nav-item:hover {
+        background-color: #9cc6cf; /* Color de fondo al pasar el ratón sobre el botón en el navbar */
+        border-color: #9cc6cf; /* Color del borde al pasar el ratón sobre el botón en el navbar */
+        font-weight: bold;
+    }
+/* Enlaces */
+a {
+    color: #007bff; /* Color del enlace */
+    text-decoration: none; /* Quitar subrayado */
+    font-weight: bold;
+}
+
+/* Botones */
+.btn-primary {
+    background-color: #00cc99; /* Color de fondo de los botones primarios */
+    border-color: #00cc99; /* Color del borde de los botones primarios */
+}
+
+    .btn-primary:hover {
+        background-color: #00997a; /* Color de fondo al pasar el ratón sobre los botones primarios */
+        border-color: #00997a; /* Color del borde al pasar el ratón sobre los botones primarios */
+    }
+
+/* Fondos */
+body {
+    background: linear-gradient(135deg, #f6e7ea, #d6e1f9); /* Degradado de fondo */
+    color: #000000; /* Color de texto principal */
+}
+
+.container {
+    background-color: #ffffff; /* Color de fondo del contenido */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+/* Formularios */
+.form-control {
+    background-color: #ffffff; /* Color de fondo de los campos de formulario */
+    border-color: #cccccc; /* Color del borde */
+}
+
+    .form-control:focus {
+        border-color: #000000; /* Color del borde al enfocar */
+        box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.25); /* Sombra al enfocar */
+    }
+
+/* Tablas */
+.table {
+    background-color: #ffffff; /* Color de fondo de la tabla */
+    border-radius: 10px; /* Bordes redondeados */
+    border-collapse: collapse; /* Colapsar bordes */
+}
+
+    /* Estilo de las celdas de la tabla */
+    .table th,
+    .table td {
+        padding: 8px; /* Espaciado interno */
+        border: 1px solid #dddddd; /* Borde de las celdas */
+    }
+
+/* Footer */
+.footer {
+    background-color: #ffffff; /* Color de fondo del pie de página */
+    color: #000000; /* Color de texto del pie de página */
+    text-align: center;
+    padding: 10px;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.col-sm-10 {
+    text-align: right; /* Alinea el valor a la derecha */
+    margin-left: auto; /* Empuja el valor hacia la derecha */
+}
+
+dt {
+    width: 300px;
+}

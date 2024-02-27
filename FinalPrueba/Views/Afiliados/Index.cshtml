@@ -1,0 +1,80 @@
+﻿@model FinalPrueba.ViewModels.AfiliadosViewModel
+@using X.PagedList.Mvc.Core
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Lista de Afiliados</h1>
+
+<p>
+    <a asp-action="Create" class="text-center">Crear afiliado</a>
+</p>
+<div class="container py-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <form asp-action="index" method="get">
+                <p>
+                    Apellido:<input type="text" asp-for="@Model.apellido" name="busquedaApellido" />
+                    DNI:<input type="number" asp-for="@Model.dni" name="busquedaDNI" />
+
+                    <input type="submit" value="Filtrar" />
+                </p>
+
+            </form>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Nombre
+                        </th>
+                        <th>
+                            Apellido
+                        </th>
+                        <th>
+                            DNI
+                        </th>
+                        <th>
+                            Fecha de nacimiento
+                        </th>
+                        <th>
+                            Foto
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Afiliados)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.nombre)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.apellido)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.dni)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.fechaNacimiento)
+                            </td>
+                            <td>
+                                @if (!string.IsNullOrEmpty(@item.foto))
+                                {
+                                    <img src="~/images/afiliados/@item.foto" style="max-height:70px; max-width:70px;" class="img-thumbnail" asp-append-version="true">
+
+                                }
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                                <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                                <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+    @Html.PagedListPager(Model.Afiliados, page => Url.Action("Index", new { page }), new PagedListRenderOptions() { LiElementClasses = new string[] { "page-item" }, PageClasses = new string[] { "page-link" } })

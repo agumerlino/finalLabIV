@@ -1,0 +1,39 @@
+﻿@model FinalPrueba.Models.Estado
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="text-center">Editar estado</h1>
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="descripcion" class="form-check-label">Descripcion de estado</label>
+                    <input asp-for="descripcion" class="form-check-input" />
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input asp-for="resolucion" class="form-check-input" />
+                        <label asp-for="resolucion" class="form-check-label">Ticket resuelto</label>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Guardar" class="btn btn-primary" /> |
+                    <a asp-action="Index" class="btn btn-primary">Vovler</a>
+                </div>
+            </form>
+
+
+            
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,60 @@
+﻿@model FinalPrueba.Models.Afiliado
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="text-center">Editar afiliado</h1>
+
+
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form asp-action="Edit" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="nombre" class="control-label">Nombre</label>
+                    <input asp-for="nombre" class="form-control" />
+                    <span asp-validation-for="nombre" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="apellido" class="control-label">Apellido</label>
+                    <input asp-for="apellido" class="form-control" />
+                    <span asp-validation-for="apellido" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="dni" class="control-label">DNI</label>
+                    <input asp-for="dni" class="form-control" />
+                    <span asp-validation-for="dni" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="fechaNacimiento" class="control-label">Fecha de nacimiento</label>
+                    <input asp-for="fechaNacimiento" class="form-control" />
+                    <span asp-validation-for="fechaNacimiento" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+
+                    @if (!string.IsNullOrEmpty(@Model.foto))
+                    {
+                        <img id="imgAfiliado" src="~/images/afiliados/@Model.foto" class="img-thumnail" asp-append-version="true" style="max-height:80px; max-width:80px">
+                    }
+
+                    <label class="control-label">Seleccione fotografía</label>
+                    <input asp-for="foto" type="file" accept="image/jpeg" />
+                </div>
+                <input type="hidden" asp-for="foto" />
+                <div class="form-group">
+                    <input type="submit" value="Guardar" class="btn btn-primary" /> |
+                    <a asp-action="Index" class="btn btn-primary">Vovler</a>
+                </div>
+            </form>
+
+            
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
